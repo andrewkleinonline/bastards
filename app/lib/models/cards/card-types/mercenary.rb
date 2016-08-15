@@ -2,7 +2,7 @@ class Mercenary < Card
 
   def initialize
     @name = "Mercenary"
-    @card_id = 4
+    @number = 4
     @power = 3
   end
 

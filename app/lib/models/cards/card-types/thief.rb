@@ -2,7 +2,7 @@ class Thief < Card
 
   def initialize
     @name = "Swindler"
-    @card_id = 1
+    @number = 1
     @power = 1
   end
 

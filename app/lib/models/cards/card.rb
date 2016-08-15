@@ -1,6 +1,6 @@
 class Card
 
-  attr_accessor :power, :name, :card_id
+  attr_accessor :power, :name, :number
 
 
   def ability

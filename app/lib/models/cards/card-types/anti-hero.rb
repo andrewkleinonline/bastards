@@ -2,7 +2,7 @@ class AntiHero < Card
 
   def initialize
     @name = "Anti-Hero"
-    @card_id = 2
+    @number = 2
     @power = 2
   end
 
