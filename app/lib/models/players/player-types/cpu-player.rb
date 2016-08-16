@@ -1,6 +1,7 @@
 class CPU < Player
 
-  def initialize
+  def initialize(name: "CPU")
+    super
     @is_human = false
   end
 end

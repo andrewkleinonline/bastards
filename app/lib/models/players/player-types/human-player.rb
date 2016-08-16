@@ -1,6 +1,7 @@
 class Human < Player
 
-  def initialize
+  def initialize(name:)
+    super
     @is_human = true
   end
 
