@@ -9,11 +9,21 @@ class Card
   }
 
   def ability
-    puts "Using #{self.name}'s ability..."
+    #puts "Using #{self.name}'s ability..."
   end
 
   def self.library
     @@library
   end
 
+  def play(trash)
+    #puts "playing card #{self.name}"
+    self.ability #activate card's ability
+    self.trash(trash)
+    #binding.pry
+  end
+
+  def trash(trash)
+    trash.cards << self
+  end
 end

@@ -2,6 +2,8 @@
 
 class CLIRunner
 
+  attr_accessor :game
+
   def start_intro
     greet #runs code to greet and create user
     ask_for_start
@@ -10,21 +12,21 @@ class CLIRunner
   def greet
     puts "Welcome to Bastards!\nWhat is your name?"
     #binding.pry
-    user_input = get_user_input #get user's name
+    user_input = Info.get_user_input #get user's name
     @player = Human.new(name: user_input) #create human player object
     puts "Hello, #{@player.name}"
   end
 
-  def get_user_input
-    puts "\nType now:"
-    user_input = gets.strip
-    puts ""
-    user_input
-  end
+  # def get_user_input
+  #   puts "\nType now:"
+  #   user_input = gets.strip
+  #   puts ""
+  #   user_input
+  # end
 
   def ask_for_start
     puts "Do you want to start the game? y/n"
-    user_input = get_user_input
+    user_input = Info.get_user_input
     if user_input.downcase == "y"
       start_game
     elsif user_input.downcase == "n"
@@ -40,7 +42,10 @@ class CLIRunner
   end
 
   def start_game
-    Game.new.start_game(@player)
+    @game = Game.new
+    @game.start_game(@player)
+    #make game a global variable?
   end
+
 
 end

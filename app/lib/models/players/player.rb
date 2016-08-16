@@ -6,7 +6,15 @@ class Player
   def initialize(name:)
     @name = name
     @health = 20
-    @hand = []
+    @hand = Hand.new() #can change initial hand size here, default is 5
+  end
+
+  def draw_card(deck)
+    self.hand.draw_card(deck)
+  end
+
+  def cards
+    self.hand.cards
   end
 
 end

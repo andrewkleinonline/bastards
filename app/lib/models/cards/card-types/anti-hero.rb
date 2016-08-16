@@ -8,6 +8,7 @@ class AntiHero < Card
 
   def ability
     super
+    #puts "got in anti-hero sub-class!"
     #nothing special - just deals damage
   end
 
