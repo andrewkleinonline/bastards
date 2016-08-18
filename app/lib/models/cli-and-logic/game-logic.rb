@@ -1,23 +1,33 @@
 class Game
 
-  attr_accessor :deck
+  attr_accessor :deck, :trash
 
-  def start_game(player)
-    @player1 = player
+  def start_game(user)
+    create_human_player(user.name)
     create_cpu_player
-    populate_deck
-    initialize_trash
+    initialize_game_assets
     draw_initial_cards(@player1)
     draw_initial_cards(@player2)
     game_round
   end
 
-  def create_cpu_player
-    @player2 = CPU.new
+  def create_human_player(name)
+    @player1 = Human.new(name: name)
+    @player1.game = self
   end
 
-  def populate_deck
-    @deck = Deck.new(initial_size: 40)
+  def create_cpu_player
+    @player2 = CPU.new
+    @player2.game = self
+  end
+
+  def initialize_game_assets
+    initialize_deck(size: 40)
+    initialize_trash
+  end
+
+  def initialize_deck(size:)
+    @deck = Deck.new(initial_size: size)
   end
 
   def initialize_trash
@@ -29,22 +39,29 @@ class Game
   end
 
   def game_round
-    #binding.pry
     make_move(@player1, @player2)
-    draw_card_phase(@player1)
+
     if @player2.health <= 0
       puts "#{@player1.name} wins!"
       exit
     end
 
+    draw_card_phase(@player1)
+
+
     make_move(@player2, @player1)
-    draw_card_phase(@player2)
+
     if @player1.health <= 0
       puts "#{@player2.name} wins!"
       exit
     end
 
+    draw_card_phase(@player2)
+
+    binding.pry
     game_round
+    #cleanup
+    #game_round
   end
 
   def make_move(player, opponent)
@@ -65,6 +82,7 @@ class Game
     selected_card.play(@trash)
     attack_player(selected_card.power, player, opponent) if selected_card.power > 0
     player.cards.delete_at(card_choice_index)
+    #cleanup
   end
 
   def attack_player(power, attacker, target)

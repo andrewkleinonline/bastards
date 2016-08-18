@@ -11,4 +11,8 @@ class Trash
     self.cards << card
   end
 
+  def size
+    @cards.size
+  end
+
 end

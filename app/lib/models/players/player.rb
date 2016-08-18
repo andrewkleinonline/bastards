@@ -1,7 +1,7 @@
 class Player
 
 
-  attr_accessor :health, :hand, :name, :is_human
+  attr_accessor :health, :hand, :name, :is_human, :game
 
   def initialize(name:)
     @name = name

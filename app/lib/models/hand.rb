@@ -24,4 +24,6 @@ class Hand
     @cards.size
   end
 
+
+
 end

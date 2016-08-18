@@ -3,7 +3,7 @@ class AntiHero < Card
   def initialize
     @name = "Anti-Hero"
     @number = 2
-    @power = 2
+    @power = 10
   end
 
   def ability

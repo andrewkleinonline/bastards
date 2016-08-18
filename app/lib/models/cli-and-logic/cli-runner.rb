@@ -13,8 +13,8 @@ class CLIRunner
     puts "Welcome to Bastards!\nWhat is your name?"
     #binding.pry
     user_input = Info.get_user_input #get user's name
-    @player = Human.new(name: user_input) #create human player object
-    puts "Hello, #{@player.name}"
+    @user = User.new(name: user_input) #create human user object
+    puts "Hello, #{@user.name}"
   end
 
   # def get_user_input
@@ -43,7 +43,7 @@ class CLIRunner
 
   def start_game
     @game = Game.new
-    @game.start_game(@player)
+    @game.start_game(@user)
     #make game a global variable?
   end
 
